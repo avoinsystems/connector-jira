@@ -21,3 +21,4 @@
 - [Avoin.Systems](https://avoin.systems):
 
   > - Nedas Žilinskas \<<nedas.zilinskas@avoin.systems>\>
+  > - Miku Laitinen \<<miku@avoin.systems>\>
