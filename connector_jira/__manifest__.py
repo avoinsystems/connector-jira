@@ -41,6 +41,7 @@
         "views/timesheet_account_analytic_line.xml",
         "wizards/jira_account_analytic_line_import_views.xml",
         "security/ir.model.access.csv",
+        "security/ir_rule.xml",
         "data/cron.xml",
         "data/queue_job_data.xml",
     ],

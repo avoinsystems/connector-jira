@@ -6,6 +6,10 @@ from odoo import _, api, exceptions, fields, models
 
 from odoo.addons.component.core import Component
 
+PROJECT_TASK_READABLE_FIELDS = {
+    "jira_bind_ids",
+}
+
 
 class JiraProjectTask(models.Model):
     _name = "jira.project.task"
@@ -113,6 +117,10 @@ class ProjectTask(models.Model):
         string="JIRA issue",
         compute="_compute_jira_issue_url",
     )
+
+    @property
+    def SELF_READABLE_FIELDS(self):
+        return super().SELF_READABLE_FIELDS | PROJECT_TASK_READABLE_FIELDS
 
     @api.depends("jira_bind_ids.jira_issue_type_id.name")
     def _compute_jira_issue_type(self):

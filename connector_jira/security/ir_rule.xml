@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="jira_project_task_rule_portal_project_sharing" model="ir.rule">
+        <field name="name">Project/Task (Jira): portal users: portal user can edit with project sharing feature</field>
+        <field name="model_id" ref="connector_jira.model_jira_project_task"/>
+        <field name="active">0</field>
+        <field name="domain_force">[
+            ('project_id.privacy_visibility', '=', 'portal'),
+            ('active', '=', True),
+            '|',
+                ('project_id.message_partner_ids', 'child_of', [user.partner_id.commercial_partner_id.id]),
+                ('message_partner_ids', 'child_of', [user.partner_id.commercial_partner_id.id]),
+            ('project_id.collaborator_ids.partner_id', 'in', [user.partner_id.id]),
+        ]</field>
+        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="jira_project_project_rule_portal" model="ir.rule">
+        <field name="name">Project (Jira): portal users: portal and following</field>
+        <field name="model_id" ref="connector_jira.model_jira_project_project"/>
+        <field name="domain_force">[
+            '&amp;',
+                ('privacy_visibility', '=', 'portal'),
+                ('message_partner_ids', 'child_of', [user.partner_id.commercial_partner_id.id]),
+        ]</field>
+        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+    </record>
+
+</odoo>
