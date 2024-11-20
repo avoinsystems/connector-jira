@@ -36,6 +36,7 @@
                     widget="url"
                     options='{"text_field": "jira_issue_key"}'
                     invisible="not jira_issue_key"
+                    optional="hide"
                 />
                 <field name="jira_epic_issue_key" column_invisible="1" />
                 <field
@@ -43,8 +44,9 @@
                     widget="url"
                     options='{"text_field":"jira_epic_issue_key"}'
                     invisible="not jira_epic_issue_key"
+                    optional="hide"
                 />
-                <field name="jira_issue_type_id" />
+                <field name="jira_issue_type_id" optional="hide"/>
             </field>
         </field>
     </record>
